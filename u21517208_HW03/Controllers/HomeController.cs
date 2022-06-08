@@ -31,7 +31,7 @@ namespace u21517208_HW03.Controllers
                     thefile.SaveAs(Path.Combine(HttpContext.Server.MapPath("~/Media/Images"), Path.GetFileName(thefile.FileName)));
                     
                 }
-                if (TypeOfFile == "Videos")
+                else if (TypeOfFile == "Videos")
                 {
                     thefile.SaveAs(Path.Combine(HttpContext.Server.MapPath("~/Media/Videos"), Path.GetFileName(thefile.FileName)));
                     
