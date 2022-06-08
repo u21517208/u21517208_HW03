@@ -1,5 +1,4 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Web.Mvc;
 using u21517208_HW03.Models;
@@ -12,13 +11,13 @@ namespace u21517208_HW03.Controllers
         public ActionResult Index()
         {
             //Fetch files/documents from directory
-            string[] FilePaths = Directory.GetFiles(Server.MapPath("~/Media/Videos/"));
+            string[] FileDirectory = Directory.GetFiles(Server.MapPath("~/Media/Videos/"));
 
             //copy the file names and return the documents in a list
 
             List<FileModel> files = new List<FileModel>();
 
-            foreach (string filePath in FilePaths)
+            foreach (string filePath in FileDirectory)
             {
                 files.Add(new FileModel { FileName = Path.GetFileName(filePath) });
 

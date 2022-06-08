@@ -1,11 +1,14 @@
 ﻿@model IEnumerable<u21517208_HW03.Models.FileModel>
+
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Files</h2>
 
-@{ var tableData = "";
+
+@*/**
+    @{ var tableData = "";
         Array temp = null;
         char[] delimiterChar = { ',' };
 
@@ -73,39 +76,39 @@
             }
         </div>
     </div>
-    
-
-@*/**
-    <div>
-        <div style="height:300px;">
-            <table>
-                <thead class="thead-dark" style="position:sticky; top:0">
-                    <tr>
-                    <tr bgcolor="black">
-                        <th style="width:500px">File Name</th>
-                        <th style="width:250px">DOWNLOAD OPTION </th>
-                        <th>DELETE OPTION</th>
-                    </tr>
-                </thead>
-
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            <button class="btn btn-success">
-                                @Html.ActionLink("Download", "Download", new { FileName = item.FileName })
-                            </button>
-                        </td>
-                        <td>
-                            <button class="btn btn-danger">
-                                @Html.ActionLink("Delete", "Delete", new { FileName = item.FileName })
-                            </button>
-                        </td>
-                    </tr>
-                }
-            </table>
-        </div>
         */*@
+
+<div>
+    <div style="height:300px;">
+        <table>
+            <thead class="thead-dark" style="position:sticky; top:0">
+                <tr>
+                <tr bgcolor="black">
+                    <th style="width:500px">File Name</th>
+                    <th style="width:250px">DOWNLOAD OPTION </th>
+                    <th>DELETE OPTION</th>
+                </tr>
+            </thead>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.FileName</td>
+                    <td>
+                        <button class="btn btn-success">
+                            @Html.ActionLink("Download", "Download", new { FileName = item.FileName })
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger">
+                            @Html.ActionLink("Delete", "Delete", new { FileName = item.FileName })
+                        </button>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
 
 
 

@@ -14,13 +14,13 @@ namespace u21517208_HW03.Controllers
         public ActionResult Index()
         {
             //Fetch files/documents from directory
-            string[] FilePaths = Directory.GetFiles(Server.MapPath("~/Media/Images/"));
+            string[] FileDirectory = Directory.GetFiles(Server.MapPath("~/Media/Images/"));
 
             //copy the file names and return the documents in a list
 
             List<FileModel> files = new List<FileModel>();
 
-            foreach (string filePath in FilePaths)
+            foreach (string filePath in FileDirectory)
             {
                 files.Add(new FileModel { FileName = Path.GetFileName(filePath) });
 

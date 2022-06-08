@@ -37,6 +37,10 @@ namespace u21517208_HW03.Controllers
                     
                 }
             }
+            else//message that will show when file is not selected
+            {
+                ViewBag.Message = "Select file";
+            }
           
 
             return View();

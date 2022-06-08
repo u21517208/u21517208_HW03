@@ -19,6 +19,7 @@
             <table>
                 <tr>
                     <td>
+                        <!--shows the file name under picture-->
                         <p>@item.FileName</p>
                     </td>
                     <td>
@@ -34,3 +35,9 @@
         </div>
     }
 </div>
+
+<script>
+ $(document).ready(function ($) {
+ $(".gallery a").fancybox();
+ });
+</script>
