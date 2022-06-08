@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Home Page</h2>
+
+
+<div class=" col-md-8">
+    <div class="card h-100" style="width:20rem;">
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">Description</h3>
+        <p class="card-text">This is a media uploading system, which enables one to select the type of file they want to upload. One can choose to upload a document, image or video using a radiobutton. Then you can then choose the file you want to upload from your device and submit it. It will then show under the chosen path and you will be able to upload or download the file</p>
+    </div>
+</div>
+
+
+<form action="" method="post" enctype="multipart/form-data">
+    <fieldset>
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        <h3>Option Selection <br /></h3>
+                        Document @Html.RadioButton("TypeOfFile", "Documents", false, new { id = "Documents" }) <br />
+                        Image @Html.RadioButton("TypeOfFile", "Images", false, new { id = "Images" }) <br />
+                        Video @Html.RadioButton("TypeOfFile", "Videos", false, new { id = "Videos" }) <br />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="file" name="file" />
+                        <br />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" value="Upload" />
+                        <br />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </fieldset>
+</form>
+@*/*
+    <div class="col-md-4">
+        @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <form>
+                <h3>Option Selection <br /></h3>
+                Document @Html.RadioButton("TypeOfFile", "Documents") <br />
+                Image @Html.RadioButton("TypeOfFile", "Images") <br />
+                Video @Html.RadioButton("TypeOfFile", "Videos") <br />
+
+                <input type="file" name="file" />
+                <input type="submit" value="Upload" />
+            </form>
+
+        }
+    </div>
+    */*@

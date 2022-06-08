@@ -1,0 +1,113 @@
+﻿@model IEnumerable<u21517208_HW03.Models.FileModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Files</h2>
+
+@{ var tableData = "";
+        Array temp = null;
+        char[] delimiterChar = { ',' };
+
+        var dataFile = Server.MapPath("~/Media/Documents");
+
+        if (File.Exists(dataFile))
+        {
+            temp = File.ReadAllLines(dataFile);
+            if (temp == null)
+            {
+                // Empty file.
+                tableData = "The file is empty.";
+            }
+        }
+        else
+        {
+            // File does not exist.
+            tableData = "The file does not exist.";
+        } }
+
+
+    <div class="well-sm">
+        <div>
+            @tableData
+
+            @if (tableData == "")
+            {
+                <div style="height:300px;">
+                    <table class="table table-condensed table-hover">
+                        <thead class="thead-dark" style="position:sticky; top:0">
+                            <tr bgcolor="black">
+                                <th>File Name</th>
+                                <th>DOWNLOAD OPTION </th>
+                                <th>DELETE OPTION</th>
+                            </tr>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <button class="btn btn-success">
+                                            @Html.ActionLink("Download", "Download", new { FileName = item.FileName })
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-danger">
+                                            @Html.ActionLink("Delete", "Delete", new { FileName = item.FileName })
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </thead>
+                        @foreach (string LineData in temp)
+                        {
+                            <tr>
+                                @foreach (string ItemData in LineData.Split(delimiterChar))
+                                {
+                                    <td class="t">
+                                        @ItemData
+                                    </td>
+                                }
+                            </tr>
+                        }
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+    
+
+@*/**
+    <div>
+        <div style="height:300px;">
+            <table>
+                <thead class="thead-dark" style="position:sticky; top:0">
+                    <tr>
+                    <tr bgcolor="black">
+                        <th style="width:500px">File Name</th>
+                        <th style="width:250px">DOWNLOAD OPTION </th>
+                        <th>DELETE OPTION</th>
+                    </tr>
+                </thead>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <button class="btn btn-success">
+                                @Html.ActionLink("Download", "Download", new { FileName = item.FileName })
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger">
+                                @Html.ActionLink("Delete", "Delete", new { FileName = item.FileName })
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+        */*@
+
+
+
+
+
