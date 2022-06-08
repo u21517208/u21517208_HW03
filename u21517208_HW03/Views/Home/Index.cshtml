@@ -22,9 +22,9 @@
                 <tr>
                     <td>
                         <h3>Option Selection <br /></h3>
-                        Document @Html.RadioButton("TypeOfFile", "Documents", false, new { id = "Documents" }) <br />
-                        Image @Html.RadioButton("TypeOfFile", "Images", false, new { id = "Images" }) <br />
-                        Video @Html.RadioButton("TypeOfFile", "Videos", false, new { id = "Videos" }) <br />
+                        Document @Html.RadioButton("TypeOfFile", "Documents", false, new { id = "Documents" , value="Documents", name="Documents"}) <br />
+                        Image @Html.RadioButton("TypeOfFile", "Images", false, new { id = "Images", value="Images", name="Images" }) <br />
+                        Video @Html.RadioButton("TypeOfFile", "Videos", false, new { id = "Videos" , value="Videos", name="Videos"}) <br />
                     </td>
                 </tr>
                 <tr>
