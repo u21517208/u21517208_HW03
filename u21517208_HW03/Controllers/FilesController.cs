@@ -22,7 +22,7 @@ namespace u21517208_HW03.Controllers
             {
                 files.Add(new FileModel { FileName = Path.GetFileName(filePath) });
 
-                return View(files);
+                
 
             }
             return View(files);
