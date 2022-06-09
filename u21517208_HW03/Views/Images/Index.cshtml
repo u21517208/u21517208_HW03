@@ -1,40 +1,38 @@
-﻿@model IEnumerable<u21517208_HW03.Models.FileModel>
+﻿@using u21517208_HW03.Models
+
+@model List<FileModel>
+
 @{
     ViewBag.Title = "Images";
 }
 
 <h2>Images</h2>
 
-<div class="row">
 
-    @foreach (var item in Model)
+
+    @foreach (FileModel file in Model)
     {
-        <div class="col-md-4">
-            <div class="thumbnail">
-                <a href="~/Media/Images/@item.FileName" data-fancybox="gallery" data-caption="@item.FileName">
-                    <img src="~/Media/Images/@item.FileName" />
+        <div class="col-lg-4 col-md-4 col-sm-4 ">
+            <div class="row">
+                <a href="~/Media/Images/@file.FileName" data-fancybox="gallery" data-caption="@file.FileName">
+                    <img src="~/Media/Images/@file.FileName" style="width:250px" />
                 </a>
+                <h5>
+                    <!--shows the file name under picture-->
+                    <p>@file.FileName</p>
+                </h5>
+                <div>
+                    <button class="btn btn-success">
+                        @Html.ActionLink("Download", "Download", new { FileName = file.FileName })
+                    </button>
+                    <button class="btn btn-danger">
+                        @Html.ActionLink("Delete", "Delete", new { FileName = file.FileName })
+                    </button>
+                </div>
             </div>
-
-            <table>
-                <tr>
-                    <td>
-                        <!--shows the file name under picture-->
-                        <p>@item.FileName</p>
-                    </td>
-                    <td>
-                        <button class="btn btn-success">
-                            @Html.ActionLink("Download", "Download", new { FileName = item.FileName })
-                        </button>
-                        <button class="btn btn-danger">
-                            @Html.ActionLink("Delete", "Delete", new { FileName = item.FileName })
-                        </button>
-                    </td>
-                </tr>
-            </table>
         </div>
     }
-</div>
+
 
 <script>
  $(document).ready(function ($) {

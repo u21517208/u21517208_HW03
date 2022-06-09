@@ -13,27 +13,28 @@ namespace u21517208_HW03.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Index(string TypeOfFile, HttpPostedFileBase thefile )
+        public ActionResult Index( HttpPostedFileBase file )
         {
             //check whether a file was uploaded
-            if (thefile != null)
+            if (file != null && file.ContentLength>0)
             {
-                string getfiles = Path.GetFileName(thefile.FileName);
+                var Type = Request["TypeOfFile"];
+                string getfiles = Path.GetFileName(file.FileName);
 
-                if (TypeOfFile == "Documents")
+                if (Type == "Documents")
                 {
-                    thefile.SaveAs(Path.Combine(HttpContext.Server.MapPath("~/Media/Documents"), Path.GetFileName(thefile.FileName)));
+                    file.SaveAs(Path.Combine(Server.MapPath("~/Media/Documents"), Path.GetFileName(file.FileName)));
                     
 
                 }
-                else if (TypeOfFile == "Images")
+                else if (Type == "Images")
                 {
-                    thefile.SaveAs(Path.Combine(HttpContext.Server.MapPath("~/Media/Images"), Path.GetFileName(thefile.FileName)));
+                   file.SaveAs(Path.Combine(Server.MapPath("~/Media/Images"), Path.GetFileName(file.FileName)));
                     
                 }
-                else if (TypeOfFile == "Videos")
+                else if (Type == "Videos")
                 {
-                    thefile.SaveAs(Path.Combine(HttpContext.Server.MapPath("~/Media/Videos"), Path.GetFileName(thefile.FileName)));
+                    file.SaveAs(Path.Combine(Server.MapPath("~/Media/Videos"), Path.GetFileName(file.FileName)));
                     
                 }
             }
